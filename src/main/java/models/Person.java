@@ -1,5 +1,9 @@
 package models;
 
+import org.hibernate.annotations.NamedNativeQuery;
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,6 +11,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "person")
+@NamedQueries({
+        @NamedQuery(name = "getAll", query = "select p from Person p")
+})
 public class Person {
     @Id
     @Column(name = "person_id")

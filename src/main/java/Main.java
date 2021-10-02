@@ -13,15 +13,15 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws IOException {
         Main main = new Main();
-//        List<Person> people = main.getPeople();
-//        people.forEach(System.out::println);
-        Person person = new Person();
-        person.setPersonId(2000);
-        person.setFirstName("Pawel");
-        person.setLastName("Nowak");
-        person.setCity("Lodz");
-        person.setEmail("pawel@gmail.com");
-        main.addPerson(person);
+        List<Person> people = main.getPeople();
+        people.forEach(System.out::println);
+//        Person person = new Person();
+//        person.setPersonId(2000);
+//        person.setFirstName("Pawel");
+//        person.setLastName("Nowak");
+//        person.setCity("Lodz");
+//        person.setEmail("pawel@gmail.com");
+//        main.addPerson(person);
     }
 
     private void addPerson(Person person) {
@@ -43,7 +43,7 @@ public class Main {
 
         Session session = factory.openSession();
         Query query = session
-                .createQuery("select p from Person p", Person.class);
+                .createNamedQuery("getAll", Person.class);
         List<Person> people = query.getResultList();
         return people;
     }
