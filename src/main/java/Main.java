@@ -1,6 +1,7 @@
 import models.Person;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import javax.persistence.Query;
@@ -12,10 +13,27 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws IOException {
         Main main = new Main();
-        List<Person> people = main.getPeople();
+//        List<Person> people = main.getPeople();
+//        people.forEach(System.out::println);
+        Person person = new Person();
+        person.setPersonId(2000);
+        person.setFirstName("Pawel");
+        person.setLastName("Nowak");
+        person.setCity("Lodz");
+        person.setEmail("pawel@gmail.com");
+        main.addPerson(person);
+    }
 
-        people.forEach(System.out::println);
-
+    private void addPerson(Person person) {
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .buildSessionFactory();
+        Session session = factory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.save(person);
+        transaction.commit();
+        session.close();
+        factory.close();
     }
 
     private List<Person> getPeople() {
