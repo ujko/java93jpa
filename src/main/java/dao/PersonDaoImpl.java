@@ -91,12 +91,12 @@ public class PersonDaoImpl implements PersonDao {
     }
 
     private int getNewId() {
-        int result = 0;
+        Integer result;
         startSession();
         Query<Integer> query = session.createNamedQuery("getId", Integer.class);
         result = query.getSingleResult();
         stopSession();
-        return result + 1;
+        return result == null ? 1 : result + 1;
     }
 
     private int getNewIdFromAll() {
