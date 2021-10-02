@@ -4,6 +4,7 @@ import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "person")
@@ -11,7 +12,8 @@ import javax.persistence.*;
         @NamedQuery(name = "getAll", query = "select p from Person p"),
         @NamedQuery(name = "getId", query = "select max(p.personId) from Person p"),
         @NamedQuery(name = "getById",
-                query = "select p from Person p where p.personId = :personId")
+                query = "select p from Person p where p.personId = :personId"),
+        @NamedQuery(name = "getByFirstName", query = "select p from Person p where p.firstName like :firstName")
 })
 public class Person {
     public final static String GET_ALL = "getAll";

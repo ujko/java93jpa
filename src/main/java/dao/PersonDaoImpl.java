@@ -82,7 +82,12 @@ public class PersonDaoImpl implements PersonDao {
 
     @Override
     public List<Person> getByFirstName(String firstName) {
-        return null;
+        startSession();
+        Query<Person> query = session.createNamedQuery("getByFirstName", Person.class);
+        query.setParameter("firstName", "%" + firstName + "%");
+        List<Person> personList = query.getResultList();
+        stopSession();
+        return personList;
     }
 
     private int getNewId() {
