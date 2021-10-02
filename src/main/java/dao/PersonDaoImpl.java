@@ -39,31 +39,45 @@ public class PersonDaoImpl implements PersonDao {
     @Override
     public Person modify(int personId, Person person) {
         stopSession();
-
-
+        Transaction transaction = session.beginTransaction();
+        Person p = getByIdWithoutSession(personId);
+        p.setPerson(person);
+        transaction.commit();
         stopSession();
-
         return null;
     }
 
     @Override
-    public void delete(Person person) {
+    public void delete(int personId) {
+        startSession();
+        Transaction transaction = session.beginTransaction();
+        Person person = getByIdWithoutSession(personId);
+        session.delete(person);
+        transaction.commit();
+        stopSession();
+    }
 
+    private Person getByIdWithoutSession(int personId) {
+        Query<Person> query = session.createNamedQuery(Person.GET_BY_ID, Person.class);
+        query.setParameter("personId", personId);
+        return query.getSingleResult();
     }
 
     @Override
     public Person getById(int personId) {
         startSession();
-        Query<Person> query = session.createNamedQuery(Person.GET_BY_ID, Person.class);
-        query.setParameter("personId", personId);
-        Person person = query.getSingleResult();
+        Person person = getByIdWithoutSession(personId);
         stopSession();
         return person;
     }
 
     @Override
     public List<Person> getAll() {
-        return null;
+        startSession();
+        Query<Person>  query = session.createNamedQuery("getAll", Person.class);
+        List<Person> personList = query.getResultList();
+        stopSession();
+        return personList;
     }
 
     @Override
