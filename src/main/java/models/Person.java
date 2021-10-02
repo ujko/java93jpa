@@ -9,9 +9,14 @@ import javax.persistence.*;
 @Table(name = "person")
 @NamedQueries({
         @NamedQuery(name = "getAll", query = "select p from Person p"),
-        @NamedQuery(name = "getId", query = "select max(p.personId) from Person p")
+        @NamedQuery(name = "getId", query = "select max(p.personId) from Person p"),
+        @NamedQuery(name = "getById",
+                query = "select p from Person p where p.personId = :personId")
 })
 public class Person {
+    public final static String GET_ALL = "getAll";
+    public final static String GET_BY_ID = "getById";
+
     @Id
     @Column(name = "person_id")
     private int personId;

@@ -38,6 +38,11 @@ public class PersonDaoImpl implements PersonDao {
 
     @Override
     public Person modify(int personId, Person person) {
+        stopSession();
+
+
+        stopSession();
+
         return null;
     }
 
@@ -48,7 +53,12 @@ public class PersonDaoImpl implements PersonDao {
 
     @Override
     public Person getById(int personId) {
-        return null;
+        startSession();
+        Query<Person> query = session.createNamedQuery(Person.GET_BY_ID, Person.class);
+        query.setParameter("personId", personId);
+        Person person = query.getSingleResult();
+        stopSession();
+        return person;
     }
 
     @Override
