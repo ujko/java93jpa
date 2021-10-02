@@ -1,10 +1,3 @@
-create table person (
-	person_id INT,
-	first_name VARCHAR(50),
-	last_name VARCHAR(50),
-	email VARCHAR(50),
-	city VARCHAR(50)
-);
 insert into person (person_id, first_name, last_name, email, city) values (1, 'Luce', 'Kealey', 'lkealey0@mac.com', 'Asempapak');
 insert into person (person_id, first_name, last_name, email, city) values (2, 'Hastings', 'Lapthorne', 'hlapthorne1@drupal.org', 'Sovetskaya');
 insert into person (person_id, first_name, last_name, email, city) values (3, 'Debee', 'Chidlow', 'dchidlow2@goo.gl', 'Opuzen');
