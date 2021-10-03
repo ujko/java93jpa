@@ -1,5 +1,5 @@
-import models.Person;
-import models.twoTablesToOneObj.Employee;
+import models.oneToOne.Student;
+import models.oneToOne.StudentBook;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -11,9 +11,6 @@ import java.util.List;
 public class Main2 {
     private SessionFactory factory;
     private Session session;
-
-    private SessionFactory factoryTest;
-    private Session sessionTest;
 
     private void startSession() {
         factory = new Configuration()
@@ -27,30 +24,29 @@ public class Main2 {
         session.close();
     }
 
-    private void startSessionTest() {
-        factoryTest = new Configuration()
-                .configure("hibernate2.cfg.xml")
-                .buildSessionFactory();
-        sessionTest = factoryTest.openSession();
-    }
-
-    private void stopSessionTest() {
-        factoryTest.close();
-        sessionTest.close();
-    }
-
     private void doSth() {
         startSession();
-        Query<Person> query = session.createQuery("select p from Person p");
-        List<Person> personList = query.getResultList();
+
+        Query<StudentBook> query = session.createQuery("select b from StudentBook b", StudentBook.class);
+        List<StudentBook> bookList =  query.getResultList();
+        bookList.forEach(System.out::println);
+
+//        StudentBook book = new StudentBook();
+//        book.setBookName("Pan samochodzik");
+//
+//        Student student = new Student();
+//        student.setStudentName("Jarek");
+//        student.setStudentBook(book);
+//        book.setStudent(student);
+//
+//        Transaction tx = session.beginTransaction();
+//        session.save(book);
+//        session.save(student);
+//        tx.commit();
+
         stopSession();
-        startSessionTest();
-        Transaction tx = sessionTest.beginTransaction();
-        personList.forEach(x -> sessionTest.save(x));
-        tx.commit();
-        stopSessionTest();
     }
-    
+
     public static void main(String[] args) {
         new Main2().doSth();
     }
