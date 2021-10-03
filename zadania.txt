@@ -1,0 +1,74 @@
+zadanie 1
+Pierwszym rozruchowym zadaniem jest znalezienie mediany dla liczb zmiennoprzecinkowych. 😉
+
+Czym jest mediana
+Szybkie przypomnienie czym jest mediana.
+
+Jest to wartość średniej arytmetycznej dwóch środkowych elementów zbioru uporządkowanego, w przypadku, gdy zbiór ma liczbę elementów nieparzystą to wtedy wybieramy element środkowy.
+
+Przykład
+1. Mając zbiór:
+
+1, 4, 6, 9
+To mediana jest równa: 4 + 6 / 2 = 5
+
+2. Mając zbiór z nieparzystą ilością elementów;
+
+1, 4, 10
+To mediana jest równa 4.
+
+
+zadanie 2
+Sprawdzanie czy zadany String jest palindromem
+	"Kobyła ma mały bok", "level", "kajak"
+
+zadanie 3
+1. Napiszmy metodę, która wypisze co drugi element tablicy przekazanej jako parametr.
+2. Napiszmy metodę, która zadziała podobnie jak metoda z zadania poprzedniego, z tymże dodatkowo przyjmie parametr, który będzie decydował o tym, czy chcemy wypisywać elementy na pozycjach parzystych, czy nieparzystych.
+3. Tworzymy klasę Runner, która będzie miała pola distance oraz speed. Konstruktor ustawi wartość pola distance na 0, a speed zgodnie z przekazanym parametrem. Klasa będzie miała metodę run, która przyjmie za parametr liczbę sekund, a która powiększy dystans zgodnie z jego prędkością. Do tego będziemy mieli metodę getDistance, która posłuży do tego, żeby sprawdzić ile biegacz przebiegł.
+4. Piszemy metodę, która przyjmie za parametr listę stringów, a która zwróci listę zawierającą dwa najdłuższe stringi z tej listy. Metodę piszemy w dwóch wersjach - przy użyciu pętli, oraz strumienia.
+5. Piszemy metodę działającą podobnie, jak metoda z zadania poprzedniego, z tymże będzie dodatkowo przyjmowała parametr, decydujący o tym, ile najdłuższych stringów z listy chcemy wybrać.
+6. Piszemy metodę reverseArray, która zwróci tablicę, która będzie wynikiem odwrócenia kolejności elementów tablicy, która jest przekazana jako parametr.
+--------------------------------------------------
+Drzewo BST
+0. Napisać metodę, która zbada głębokość drzewa BST (liczbę poziomów).
+1. Napisać metodę toString, która wypisze kolejno poziomami elementy drzewa.
+2. Napisać metodę, która zwróci klucze węzłów drzewa BST w kolejności posortowanej.
+3. Przy wykorzystaniu drzewa BST z metodą z zadania 2 napisać metodę sortującą przekazaną jako parametr tablicę.
+--------------------------------------------------
+Labirynt
+1. Zmodyfikujmy algorytm w taki sposób, aby kolejny stan był wybierany na podstawie liczby kroków, które należało wykonać z punktu startowego, aby osiągnąć punkt, którego stan dotyczy. Innymi słowy podążamy we wszystkich możliwych kierunkach kolejno po jednym kroku.
+--------------------------------------------------
+Kolejki oraz stosy
+1. Stworzyć implementację interfejsu Stack w taki sposób, abyśmy w klasie mieli jedno pole typu StackElement o nazwie peek.
+2. Stworzyć implementację interfejsu Queue w taki sposób, abyśmy w klasie mieli dwa pola typu QueueElement o nazwach head i tail (reprezentujące czoło oraz koniec kolejki).
+3. Stworzyć implementację interfejsu Queue w taki sposób, abyśmy mieli jedno pole o nazwie head typu QueueElement.
+--------------------------------------------------
+Dodatkowe zadanie
+Zastanowić się nad tym, w jaki sposób możemy rozpisać kolejki rozgrywek ligowych w taki sposób, aby każda drużyna zagrała z każdą. Napisać klasy, których można użyć do zapisania takich informacji. Następnie zaimplementować algorytm, który takie kolejki wygeneruje.
+
+Zadania do domu:
+   1. Kalkulator wykonujący następujące działania:
+	a) dodawanie
+	b) odejmowanie
+	c) mnożenie
+	d) dzielenie
+	e) potęgowanie
+	f) pierwiastkowanie
+Uwzględnijcie proszę wszystkie możliwości i wyjątki (dzielenie przez zero, liczba ujemnna w wykładniku potęgi, pierwiastek liczby ujemnej)
+
+   2. Obliczanie pól figur geometrycznych:
+	a) kwadratu
+	b) prostokąta
+	c) równoległoboku
+	d) trapezu
+	e) trójkąta
+	f) rombu
+Jak wyżej - uwzględnienie możliwości popełnienia błędu przez użytkownika
+
+   3. Wyznaczanie NWD i NWW dwóch liczb.
+	NWD - Największy wspólny dziennik dwóch liczb. Algorytm do podejrzenia np. na wikipedii
+	NWW - Najmniejsza wspólna wielokrotność dwóch liczb. Algorytm do podejrzenia na wikipedii.
+Prośba do Was - spróbujcie sami wymyśleć listę kroków i spisać ją na kartce. Jeśli nie będziecie w stanie przenieść tego na kod - nic straconego.
+Możecie wtedy podejrzeć przykładowe implementacje i sprawdzić, czy są one zbieżne z Waszą listą kroków.
+

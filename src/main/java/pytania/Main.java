@@ -7,14 +7,9 @@ import java.util.function.Consumer;
 
 public class Main {
     public static void main(String[] args) {
-        String a1 = "AAAAAAAAA";
 
-        String a2 = "123123123";
-
-        String a3 = "ABabABabABab";
-
-        String a4 = "ABABCDCDABABCDCD";
     }
+
 
 /*
 * metoda przyjmująca int, zwracająca int
