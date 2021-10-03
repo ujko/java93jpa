@@ -1,9 +1,13 @@
 import models.inheritance.Daughter;
 import models.inheritance.Son;
+import models.oneToMany.Client;
+import models.oneToMany.Order;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+
+import java.util.List;
 
 public class Main2 {
     private SessionFactory factory;
@@ -22,20 +26,18 @@ public class Main2 {
     }
 
     private void doSth() {
+        Client client = new Client();
+        client.setClientName("Rafal");
+        List<Order> orders = List.of(
+                new Order("Pizza"),
+                new Order("Spahgetti"),
+                new Order("Schabowy")
+        );
+        client.setOrders(orders);
         startSession();
-        Son son = new Son();
-        son.setSonName("Juzek");
-        son.setDadId(1);
-        son.setDadName("Krystyna");
-
-        Daughter daughter = new Daughter();
-        daughter.setDaughterName("Ola");
-        daughter.setDadId(2);
-        daughter.setDadName("Tadziu");
 
         Transaction tx = session.beginTransaction();
-        session.save(son);
-        session.save(daughter);
+        session.save(client);
         tx.commit();
 
         stopSession();
