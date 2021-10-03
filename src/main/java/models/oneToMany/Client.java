@@ -13,7 +13,7 @@ public class Client {
 
     private String clientName;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id")
     private List<Order> orders;
 
