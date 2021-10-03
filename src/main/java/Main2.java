@@ -27,12 +27,9 @@ public class Main2 {
 
     private void doSth() {
         startSession();
-        List<Client> clientList = session.createQuery("select c from Client c").getResultList();
-        System.out.println(clientList.get(0));
-        System.out.println("-----------------------------------------------------");
-        clientList.get(0).getOrders().forEach(System.out::println);
+
         stopSession();
-//        clientList.get(0).getOrders().forEach(System.out::println);
+
     }
 
     public static void main(String[] args) {
