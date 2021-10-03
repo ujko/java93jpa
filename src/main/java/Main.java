@@ -55,24 +55,32 @@ public class Main {
 //        person.setFirstName("Pawel");
 //        new PersonDaoImpl().add(person);
 
-//        Connection connection = DriverManager
-//                .getConnection("jdbc:mysql://localhost:3306/mysql?serverTimezone=Europe/Warsaw", "root", "example");
-//
-//        Statement statement = connection.createStatement();
-//
-//        String query = "select * from person";
-//        ResultSet resultSet = statement.executeQuery(query);
-//        List<Person> personList = new ArrayList<>();
-//
-//        while (resultSet.next()) {
-//            Person p = new Person();
-//            p.setPersonId(resultSet.getInt("person_id"));
-//
-//
-//            personList.add(p);
-//
-//        }
+    }
 
 
+    private void jdbcExample() throws SQLException {
+        Connection connection = DriverManager
+                .getConnection("jdbc:mysql://localhost:3306/mysql?serverTimezone=Europe/Warsaw", "root", "example");
+
+        Statement statement = connection.createStatement();
+
+        String query = "select * from person";
+        ResultSet resultSet = statement.executeQuery(query);
+
+        List<Person> personList = getPersons(resultSet);
+    }
+
+    private List<Person> getPersons(ResultSet rs) throws SQLException {
+        List<Person> personList = new ArrayList<>();
+        while (rs.next()) {
+            Person p = new Person();
+            p.setPersonId(rs.getInt("person_id"));
+            p.setFirstName(rs.getString("first_name"));
+            p.setLastName(rs.getString("last_name"));
+            p.setEmail(rs.getString("email"));
+            p.setCity(rs.getString("city"));
+            personList.add(p);
+        }
+        return personList;
     }
 }
