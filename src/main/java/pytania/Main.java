@@ -7,8 +7,20 @@ import java.util.function.Consumer;
 
 public class Main {
     public static void main(String[] args) {
-
+        System.out.println(intToBinaryString(488));
     }
+
+    private static String intToBinaryString(int s) {
+        System.out.println("Powinno być: " + Integer.toBinaryString(s));
+        String result = "";
+        while(s > 0) {
+            result = (s % 2) + result;
+            s /= 2;
+        }
+        return result;
+    }
+
+
 
 
 /*
