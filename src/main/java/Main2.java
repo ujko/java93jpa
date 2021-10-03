@@ -26,21 +26,13 @@ public class Main2 {
     }
 
     private void doSth() {
-        Client client = new Client();
-        client.setClientName("Rafal");
-        List<Order> orders = List.of(
-                new Order("Pizza"),
-                new Order("Spahgetti"),
-                new Order("Schabowy")
-        );
-        client.setOrders(orders);
         startSession();
-
-        Transaction tx = session.beginTransaction();
-        session.save(client);
-        tx.commit();
-
+        List<Client> clientList = session.createQuery("select c from Client c").getResultList();
+        System.out.println(clientList.get(0));
+        System.out.println("-----------------------------------------------------");
+        clientList.get(0).getOrders().forEach(System.out::println);
         stopSession();
+//        clientList.get(0).getOrders().forEach(System.out::println);
     }
 
     public static void main(String[] args) {
